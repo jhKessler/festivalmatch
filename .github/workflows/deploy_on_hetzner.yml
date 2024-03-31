@@ -1,0 +1,28 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Deploy to server
+      env:
+        DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        HOST: ${{ secrets.DEPLOY_SERVER_URL }}
+        USER: ${{ secrets.DEPLOY_SERVER_USER }}
+        PORT: 22 # default SSH port
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$DEPLOY_SSH_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -p $PORT $HOST >> ~/.ssh/known_hosts
+        ssh $USER@$HOST "cd festivalmatch && git pull && make prod"
+  

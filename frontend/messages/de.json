@@ -1,0 +1,123 @@
+{
+  "Navbar": {
+    "Home": "Home",
+    "Festivals": "Meine Festivals",
+    "Crews": "Meine Crews",
+    "Privacy": "Datenschutz",
+    "Contact": "Kontakt",
+    "Current": "Momentan eingeloggt als",
+    "SignOut": "Abmelden"
+
+  },
+
+  "Contact": {
+    "Responsible": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:"
+  },
+
+  "ErrorPage": {
+    "Title": "Irgendwas ist schief gelaufen...",
+    "Message": "Bitte versuche es später noch einmal.",
+    "Button": "Zurück zur Startseite"
+  },
+  "Privacy": {
+    "Introduction": "Festivalmatch nutzt die Spotify Web API, um Daten von deinem Spotify-Profil zu erhalten.",
+    "LoginRequest": "Wenn du dich bei Festivalmatch anmeldest, wirst du gebeten, uns zu erlauben, bestimmte Daten von deinem Spotify-Konto über die Spotify API abzurufen.",
+    "DataUsage": "Wir werden diese Daten (einschließlich deines Benutzernamens, Profilbildes sowie deiner Top-Künstler und Top-Songs) verwenden, um dir personalisierte Festival-Tipps zu geben.",
+    "DataStorage": "Diese Daten werden auf unseren Servern gespeichert, um unsere Dienste zu ermöglichen.",
+    "DataSharing": "Wir werden deine Daten nicht an Dritte weitergeben.",
+    "CookiesPolicy": "Wir verwenden keine Cookies.",
+    "PolicyAgreement": "Durch die Nutzung von Festivalmatch stimmst du den Bedingungen dieser Datenschutzrichtlinie zu.",
+    "SpotifyPermissionRemoval": "Wenn du zu irgendeinem Zeitpunkt die Berechtigungen von Festivalmatch auf Spotify entfernen möchtest, kannst du das",
+    "SpotifyPermissionRemovalLink": "hier tun",
+    "UserRights": "Du hast das Recht, auf deine Daten zuzugreifen, Korrekturen anzufordern, deine Daten zu löschen, die Verarbeitung deiner Daten einzuschränken, der Verarbeitung zu widersprechen und die Übertragbarkeit deiner Daten anzufordern.",
+    "ConsentWithdrawal": "Du hast auch das Recht, deine Zustimmung zur Verarbeitung deiner Daten jederzeit zu widerrufen.",
+    "Contact": "Bei Fragen kannst du gerne",
+    "ContactLink": "uns kontaktieren."
+  },
+
+  "Metadata": {
+    "Title": "Festivalmatch - Finde dein perfektes Festival",
+    "Description": "Finde Festivals, die zu deinem Musikgeschmack passen! Logge dich einfach mit deinem Spotify-Konto ein, um loszulegen!",
+    "CrewInviteTitle": "Festivalmatch - Trete {usr} bei!",
+    "CrewInviteDescription": "Du wurdest von {usr} in die Festivalmatch-Crew '{grp}' eingeladen! Logge dich über Spotify ein, um beizutreten."
+  },
+
+  "WelcomePage": {
+    "Headline": "Finde das perfekte Festival",
+    "SubHeadline": "Entdecke Festivals, die zu deinem Musikgeschmack passen! Logge dich mit deinem Spotify-Konto ein, um loszulegen!",
+    "PopularHeadline": "Beliebte Festivals",
+    "PopularSubHeadline": "Entdecke eine vielfältige Auswahl an Musikfestivals aller Genres.",
+    "SignInWSpotify": "Mit Spotify anmelden",
+    "Feature1Title": "Finde Festivals",
+    "Feature1Description": "Importiere deine Lieblingskünstler mit deinem Spotify Konto und wir finden Festivals, die zu dir passen.",
+    "Feature2Title": "Lade Freunde ein",
+    "Feature2Description": "Du suchst nach einem Festival für deine Gruppe? Lade deine Freunde und schalte Festivaltipps frei die allen gefallen!"
+  },
+
+  "UserDashboard": {
+    "Greeting": "Willkommen auf deinem Dashboard!",
+    "Individual": "Deine Festivals",
+    "ShowAll": "Alle anzeigen",
+    "Crews": "Deine Crews",
+    "MemberSingular": "1 Mitglied",
+    "MemberPlural": "Mitglieder",
+    "CreateCrew": "Crew erstellen",
+    "InviteFriends": "Lade deine Freunde ein!"
+  },
+
+  "Suggestions": {
+    "For": "Festivals für"
+  },
+
+  "UserCrews": {
+    "Headline": "Deine Crews",
+    "SubHeadline1": "Mach dich bereit, dein Festivalerlebnis mit dieser neuen Funktion auf ein neues Level zu heben!",
+    "SubHeadline2": "Gründe einfach eine Gruppe mit bis zu drei Freunden und finde Festivals, die perfekt auf euch alle abgestimmt sind!",
+    "CreateCrew": "Crew erstellen"
+  },
+
+  "Crew": {
+    "MemberSingular": "1 Mitglied",
+    "MemberPlural": " Mitglieder",
+    "InviteFriends": "Lade deine Freunde ein!"
+  },
+
+  "CreateCrew": {
+    "h1": "Erstelle eine Crew",
+    "h2": "Gib deiner Crew einen Namen",
+    "h3": "Gib deiner Crew einen Namen!",
+    "h4": "Andere Crewmitglieder sehen dich unter diesem Namen:",
+    "Cancel": "Abbrechen",
+    "Create": "Erstellen",
+    "CrewName": "Name der Crew",
+    "YourName": "Dein Name"
+  },
+
+  "JoinCrew": {
+    "Headline": "Einer Crew beitreten",
+    "InvitedBy1": "Du wurdest von ",
+    "InvitedBy2": " eingeladen, der Crew ",
+    "InvitedBy3": " beizutreten",
+    "InvitedBy4": "Logge dich über Spotify ein, um Festivalltipps für die komplette Crew freizuschalten!",
+    "Join": "Crew beitreten",
+    "JoinSpotify": "Mit Spotify einloggen und beitreten",
+    "YourName": "Dein Name"
+  },
+
+  "SignupPage": {
+    "Headline": "Willkommen bei Festivalmatch!",
+    "SubHeadline": "Finde Festivals, die zu deinem Musikgeschmack passen! Logge dich mit deinem Spotify-Konto ein, um loszulegen!",
+    "SignInWSpotify": "Mit Spotify anmelden",
+    "SignInWApple": "Coming soon: Mit Apple Music anmelden"
+  },
+
+  "FAQ": {
+    "Question1": "Wie findet Festivalmatch die richtigen Festivals für mich?",
+    "Answer1": "Um für dich die besten Festivals zu finden, vergebe ich einen Match-Score an jedes Festival in meiner Festivaldatenbank indem wir ich Lineup mit deinen Lieblingskünstlern vergleichen. Je höher der Score, desto besser passt das Festival zu deinem Musikgeschmack!",
+    "Question2": "Wie verwendet Festivalmatch mein Spotify-Konto, um Festivals zu empfehlen?",
+    "Answer2": "So funktionierts: Nachdem du dich mit deinem Spotify-Konto eingeloggt hast, ermöglicht Spotify mir, deine Lieblingskünstler und -Songs über die WebAPI abzufragen.",
+    "Question3": "Kann ich Festivalvorschläge bekommen, ohne ein Spotify-Konto zu haben?",
+    "Answer3": "Nein das ist leider noch nicht möglich. Ich arbeite momentan daran, auch Apple Music zu unterstützen und die manuelle Eingabe deiner Lieblingskünstler zu ermöglichen."
+  }
+
+}

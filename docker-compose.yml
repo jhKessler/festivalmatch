@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  festival_db:
+    image: postgres:16.2
+    container_name: festival_db
+    volumes:
+      - festival_db:/var/lib/postgresql/data
+    ports:
+      - '0.0.0.0:7623:5432'
+    environment:
+      - 'TZ=Europe/Berlin'
+      - 'PGTZ=Europe/Berlin'
+      - 'POSTGRES_USER=${POSTGRES_USER}'
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+      - 'POSTGRES_DB=festival_db'
+      - 'POSTGRES_ENCODING=UNICODE'
+      - 'POSTGRES_COLLATE=C'
+      - 'POSTGRES_COLLATE_TYPE=C'
+  festival_backend:
+    depends_on:
+      - festival_db
+    build: ./backend
+    image: jhkessler/festival_backend:latest
+    container_name: festival_backend
+    environment:
+      - 'MODE=${MODE}'
+      - 'POSTGRES_USER=${POSTGRES_USER}'
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+      - 'POSTGRES_DB=festival_db'
+      - 'POSTGRES_HOST=${POSTGRES_HOST}'
+      - 'POSTGRES_PORT=${POSTGRES_PORT}'
+      - 'SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}'
+      - 'SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}'
+      - 'MAIL_SENDER=${MAIL_SENDER}'
+      - 'MAIL_RECEIVER=${MAIL_RECEIVER}'
+      - 'MAIL_PW=${MAIL_PW}'
+      - 'NEXT_PUBLIC_FRONTEND_URL=${NEXT_PUBLIC_FRONTEND_URL}'
+      - 'IPINFO_ACCESS_TOKEN=${IPINFO_ACCESS_TOKEN}'
+  festival_frontend:
+    depends_on:
+      - festival_backend
+    image: jhkessler/festival_frontend:latest
+    build: 
+      context: ./frontend
+      args:
+        - NEXT_PUBLIC_FRONTEND_URL=${NEXT_PUBLIC_FRONTEND_URL}
+        - NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL}
+        - NEXT_PUBLIC_CLIENT_BACKEND_URL=${NEXT_PUBLIC_CLIENT_BACKEND_URL}
+        - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+        - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+        - NEXT_PUBLIC_MODE=${NEXT_PUBLIC_MODE}
+        - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+        - NEXT_PUBLIC_WS_URL=${NEXT_PUBLIC_WS_URL}
+    container_name: festival_frontend
+    environment:
+      - 'NEXT_PUBLIC_FRONTEND_URL=${NEXT_PUBLIC_FRONTEND_URL}'
+      - 'NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL}'
+      - 'NEXT_PUBLIC_CLIENT_BACKEND_URL=${NEXT_PUBLIC_CLIENT_BACKEND_URL}'
+      - 'SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}'
+      - 'SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}'
+      - 'NEXT_PUBLIC_MODE=${NEXT_PUBLIC_MODE}'
+      - 'NEXTAUTH_SECRET=${NEXTAUTH_SECRET}'
+      - 'NEXTAUTH_URL=${NEXTAUTH_URL}'
+      - 'NEXT_PUBLIC_WS_URL=${NEXT_PUBLIC_WS_URL}'
+  reverse_proxy:
+      image: jhkessler/reverse_proxy:latest
+      depends_on:
+        - festival_backend
+        - festival_frontend
+      container_name: reverse_proxy
+      build: ./nginx
+      ports:
+        - '0.0.0.0:8080:8080'
+volumes:
+  festival_db:

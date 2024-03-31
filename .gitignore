@@ -1,0 +1,8 @@
+frontend/.env
+frontend/node_modules
+.env
+backend/.env
+*__pycache__*
+backend/.cache
+backend/test.ipynb
+/backend/.cache

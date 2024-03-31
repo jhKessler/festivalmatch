@@ -1,0 +1,113 @@
+{
+  "Navbar": {
+    "Home": "Home",
+    "Festivals": "My Festivals",
+    "Crews": "My Crews",
+    "Privacy": "Privacy",
+    "Contact": "Contact",
+    "Current": "Currently logged in as",
+    "SignOut": "Sign out"
+  },
+
+  "Contact": {
+    "Responsible": "Responsible for the content of this website according to § 55 Abs. 2 RStV:"
+  },
+
+  "ErrorPage": {
+    "Title": "Something went wrong!",
+    "Message": "Please try again later",
+    "Button": "Back to Home"
+  },
+
+  "Privacy": {
+    "Introduction": "Festivalmatch uses the Spotify Web API to get data from your Spotify profile.",
+    "LoginRequest": "When you log in to festivalmatch, you will be requested to allow us to retrieve specific data from your Spotify account via the Spotify API.",
+    "DataUsage": "We will use this data (including your username, profile picture and your top artists and top songs) to give you personalized festival tips.",
+    "DataStorage": "This data is stored on our servers to enable our services.",
+    "DataSharing": "We will not share your data with any third parties.",
+    "CookiesPolicy": "We do not use any cookies.",
+    "PolicyAgreement": "By using festivalmatch, you agree to the terms of this privacy policy.",
+    "SpotifyPermissionRemoval": "If at any point you wish to remove festivalmatch's permissions on Spotify, you can do so",
+    "SpotifyPermissionRemovalLink": "here",
+    "UserRights": "You have the right to access your data, request corrections, delete your data, restrict the processing of your data, object to processing, and request the portability of your data.",
+    "ConsentWithdrawal": "You also have the right to withdraw your consent to the processing of your data at any time.",
+    "Contact": "For any questions, feel free to",
+    "ContactLink": "contact us."
+  },
+
+  "WelcomePage": {
+    "Headline": "Discover your perfect festival",
+    "SubHeadline": "Let the festivals find you! Log in with Spotify to unlock personalized festival tips based on your favorite artists and tracks.",
+    "PopularHeadline": "Popular Festivals",
+    "PopularSubHeadline": "Explore a diverse selection of music festivals all kinds of genres.",
+    "SignInWSpotify": "Sign In with Spotify",
+    "Feature1Title": "Find festivals",
+    "Feature1Description": "Log in with Spotify and get personalized festival tips based on your favorite artists and tracks!",
+    "Feature2Title": "Invite friends",
+    "Feature2Description": "Searching for festivals with your friends? Create a crew and get festival recommendations, tailored to everyone in your group!"
+  },
+
+  "Metadata": {
+    "Title": "Festivalmatch - Find your perfect festival",
+    "Description": "Find festivals based on your favorite artists and tracks. Simply Log in with Spotify to get personalized festival tips!"
+  },
+
+  "UserDashboard": {
+    "Greeting": "Welcome to your Dashboard!",
+    "Individual": "Your Festivals",
+    "ShowAll": "Show All",
+    "Crews": "Your Crews",
+    "MemberSingular": "1 Member",
+    "MemberPlural": "Members",
+    "CreateCrew": "Create a Crew",
+    "InviteFriends": "Invite your friends!"
+  },
+
+  "UserCrews": {
+    "Headline": "Your Crews",
+    "SubHeadline1": "Get ready to amplify your festival experience with our latest feature!",
+    "SubHeadline2": "Just create a group with up to 3 friends and discover festival recommendations tailored to your entire crew!",
+    "CreateCrew": "Create a Crew"
+  },
+
+  "Crew": {
+    "MemberSingular": "1 Member",
+    "MemberPlural": " Members",
+    "InviteFriends": "Invote your Friends!"
+  },
+  "CreateCrew": {
+    "h1": "Create a Crew",
+    "h2": "Name your Crew",
+    "h3": "Give your crew a name!",
+    "h4": "Other crewmembers will see you as:",
+    "Cancel": "Cancel",
+    "Create": "Create",
+    "CrewName": "Crew Name",
+    "YourName": "Your Name"
+  },
+
+  "JoinCrew": {
+    "Headline": "Join Crew",
+    "InvitedBy1": "You have been invited by ",
+    "InvitedBy2": "to join their crew",
+    "InvitedBy3": "",
+    "InvitedBy4": "Log in with Spotify to join their crew and unlock personalized festival tips!",
+    "Join": "Join Crew",
+    "JoinSpotify": "Sign in with Spotfy and Join Crew",
+    "YourName": "Your Name"
+  },
+  "SignupPage": {
+    "Headline": "Welcome to Festivalmatch!",
+    "SubHeadline": "Find festivals based on your favorite artists and tracks. Simply Log in with Spotify to get personalized festival tips!",
+    "SignInWSpotify": "Sign In with Spotify",
+    "SignInWApple": "Coming soon: Apple Music Support"
+  },
+  "FAQ": {
+    "Question1": "How does Festivalmatch find the right festivals for me?",
+    "Answer1": "In order to find the best festivals for you, I give each festival in my festival database a match score based on your favorite artists and songs and the artists performing at the festival. The higher the score, the better the festival suits your musical taste!",
+    "Question2": "How does Festivalmatch use my Spotify account to recommend festivals?",
+    "Answer2": "This is how it works: After you log in with your Spotify account, Spotify allows me to query your favorite artists and songs via the WebAPI. After one hour, this access expires and I cannot request any further data from Spotify .",
+    "Question3": "Can I get festival tips without having a Spotify account?",
+    "Answer3": "No, unfortunately that's not possible yet. I am currently working on supporting Apple Music and allowing you to enter your favorite artists manually."
+  }
+}
