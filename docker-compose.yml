@@ -37,6 +37,7 @@ services:
       - 'MAIL_PW=${MAIL_PW}'
       - 'NEXT_PUBLIC_FRONTEND_URL=${NEXT_PUBLIC_FRONTEND_URL}'
       - 'IPINFO_ACCESS_TOKEN=${IPINFO_ACCESS_TOKEN}'
+      - 'DATA_PAGE_BASE_URL=${DATA_PAGE_BASE_URL}'
   festival_frontend:
     depends_on:
       - festival_backend
