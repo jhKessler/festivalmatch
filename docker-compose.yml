@@ -24,6 +24,7 @@ services:
     image: jhkessler/festival_backend:latest
     container_name: festival_backend
     environment:
+      - 'LOAD_ENV_VARS=true'
       - 'MODE=${MODE}'
       - 'POSTGRES_USER=${POSTGRES_USER}'
       - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'

@@ -1,5 +1,6 @@
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
+import os
 from enum import Enum
 
 class Mode(str, Enum):
@@ -18,13 +19,13 @@ class Settings(BaseSettings):
     mail_sender: str
     mail_receiver: str
     mail_pw: str
-    next_public_frontend_url: str
     ipinfo_access_token: str
-    nextauth_url: str
-    max_crew_memberships: int
-    max_crew_members: int
+    max_crew_memberships: int = 5
+    max_crew_members: int = 4
     data_page_base_url: str
 
-    model_config = SettingsConfigDict(env_file=".env")
+
+if ".env" in os.listdir():
+    load_dotenv(dotenv_path=".env")
 
 settings = Settings()

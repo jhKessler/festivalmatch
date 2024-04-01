@@ -1,4 +1,4 @@
-from backend.models.user import UserAuthorizationData
+from models.user import UserAuthorizationData
 
 
 def build_user_home_preview(user_auth: UserAuthorizationData) -> dict:
