@@ -9,9 +9,9 @@ from peewee import (
     ForeignKeyField,
 )
 
-from src.common.apis import spotify
-from src.database.festival import Festival
-from src.database.base_model import BaseModel
+from core.common.apis import spotify
+from models import BaseModel
+from .festival import Festival
 
 
 class Artist(BaseModel):

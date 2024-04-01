@@ -1,9 +1,8 @@
 from collections import defaultdict
 from .common import filter_top_n
-from src.database import UserSuggestions
+from models import UserAuthorizationData, Festival, Artist
 from typing import TypedDict
-from src.database import Festival, Artist
-from src.common.apis.responses.spotify_responses import TopArtistResponse
+from core.common.apis.responses.spotify_responses import TopArtistResponse
 import uuid
 
 
@@ -23,7 +22,7 @@ class SuggestedCrewFestival(TypedDict):
 
 
 def make_crew_suggestions(
-    user_suggestions: list[UserSuggestions, list[uuid.UUID]], result_n: int
+    user_suggestions: list[UserAuthorizationData, list[uuid.UUID]], result_n: int
 ) -> list[uuid.UUID]:
     """Makes suggestions for a group of users
 
@@ -47,13 +46,13 @@ def make_crew_suggestions(
 
 
 def build_lineup(
-    appearances: list[Artist], users: list[UserSuggestions]
+    appearances: list[Artist], users: list[UserAuthorizationData]
 ) -> list[Artist]:
     """reorder the lineup based on the user's likings
 
     Args:
         appearances (list[Artist]): List of appearances
-        users (list[UserSuggestions]): List of users
+        users (list[UserAuthorizationData]): List of users
     """
     artist_scores = defaultdict(float)
     for user in users:
@@ -73,7 +72,7 @@ def build_lineup(
 
 
 def get_artists_by_user(
-    users: list[UserSuggestions], lineup_ordered: list[Artist]
+    users: list[UserAuthorizationData], lineup_ordered: list[Artist]
 ) -> list[UserArtists]:
     """Get the artists that the users like from the lineup
 
@@ -98,7 +97,7 @@ def get_artists_by_user(
 
 
 def build_crew_festival_response(
-    users: list[UserSuggestions], suggested_festival: uuid.UUID
+    users: list[UserAuthorizationData], suggested_festival: uuid.UUID
 ) -> SuggestedCrewFestival:
     """Builds the response for a group of users
 

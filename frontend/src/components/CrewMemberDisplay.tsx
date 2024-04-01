@@ -67,16 +67,15 @@ function CrewnameInputField({
             onClick={async () => {
               if (isEditing && changesMade) {
                 const response = await fetch(
-                  prepareBackendUrl("/api/crews/edit/"),
+                  prepareBackendUrl("/api/crew/edit/", {crew_id: crewId}, true),
                   {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
+                      Authorization: session?.access_token!
                     },
                     body: JSON.stringify({
-                      name: inputValue,
-                      crew_id: crewId,
-                      access_token: session?.access_token,
+                      name: inputValue
                     }),
                   }
                 );

@@ -1,5 +1,5 @@
-from src.database import ArtistAppearance
-from src.common.apis.responses.spotify_responses import (
+from models import ArtistAppearance
+from core.common.apis.responses.spotify_responses import (
     TopArtistResponse,
     TopTracksResponse,
 )

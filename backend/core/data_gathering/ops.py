@@ -2,10 +2,10 @@ import time
 from tqdm import tqdm
 from loguru import logger
 import datetime as dt
-from src.data_gathering import scrape, parse
-from src.common.apis import geocode
+from core.data_gathering import scrape, parse
+from core.common.apis import geocode
 
-from src.database import ArtistAppearance, ArtistMapping, Festival, FestivalHtml
+from models import ArtistAppearance, ArtistMapping, Festival, FestivalHtml
 
 
 def assert_data():

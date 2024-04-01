@@ -21,12 +21,21 @@ export default function Crews() {
 
   useEffect(() => {
     const fetchCrews = async () => {
+      if (!session?.access_token) {
+        return
+      }
       const response = await fetch(
         prepareBackendUrl(
-          "/api/crews/all/",
-          { access_token: session?.access_token },
+          "/api/preview/crews/",
+          {},
           true
-        )
+        ),
+        {
+          method: "GET",
+          headers: {
+            Authorization: session?.access_token,
+          }
+        }
       );
       setHttpCode(response.status);
       if (response.status === 200) {
@@ -53,7 +62,7 @@ export default function Crews() {
           <br /> {t("SubHeadline2")}
         </p>
         <button
-          className="flex flex-row bg-purple hover:bg-purple-dimmed rounded-md items-center p-2 justify-around w-40"
+          className="flex flex-row bg-purple hover:bg-purple-dimmed transition-colors duration-300 rounded-md items-center p-2 justify-around w-40"
           onClick={() => setShowCrewModal(true)}
         >
           <span>{t("CreateCrew")}</span>
@@ -112,16 +121,14 @@ export default function Crews() {
                 crew={crew}
                 onDelete={async () => {
                   const response = await fetch(
-                    prepareBackendUrl("/api/crews/delete/", {}, true),
+                    prepareBackendUrl("/api/crew/delete/", {crew_id: crew.id}, true),
                     {
                       method: "POST",
                       headers: {
                         "Content-Type": "application/json",
+                        Authorization: session?.access_token!
                       },
-                      body: JSON.stringify({
-                        access_token: session?.access_token,
-                        crew_id: crew.id,
-                      }),
+                      body: JSON.stringify({}),
                     }
                   );
                   setCrews(crews.filter((c) => c.id !== crew.id));

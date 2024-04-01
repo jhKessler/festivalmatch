@@ -13,11 +13,18 @@ async function fetchCrewSuggestions(
   setSuggestions: (suggestions: FestivalSuggestionData) => void
 ) {
   const url = prepareBackendUrl(
-    "/api/crews/",
-    { crew_id: crewId, access_token: access_token },
+    "/api/crew/",
+    { crew_id: crewId },
     true
   );
-  const response = await fetch(url);
+  const response = await fetch(
+    url,
+    {
+      headers: {
+        Authorization: access_token
+      }
+    }
+  );
   if (response.status !== 200) {
     console.error("Failed to fetch crew suggestions", response);
     return;
@@ -37,9 +44,9 @@ export default function Page() {
   useEffect(() => {
     // WebSocket connection setup
     const ws = new WebSocket(
-      prepareUrl(process.env.NEXT_PUBLIC_WS_URL!, "/api/crew_updates/", {
+      prepareUrl(process.env.NEXT_PUBLIC_WS_URL!, "/api/crew/updates/", {
         crew_id: crewId,
-        access_token: session?.access_token,
+        token: session?.access_token,
       })
     );
 

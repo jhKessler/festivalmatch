@@ -4,7 +4,6 @@ import CrewModal from "@/components/CrewModal";
 import HomePreviewCard from "@/components/HomePreviewCard";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { HomePreviewData } from "../interfaces";
 import { prepareBackendUrl } from "../utils";
@@ -18,14 +17,20 @@ export default function UserDashboard() {
 
   useEffect(() => {
     const fetchPreviewData = async () => {
+      if (!session?.access_token) {
+        return
+      }
       const response = await fetch(
         prepareBackendUrl(
-          "/api/home/",
-          { access_token: session?.access_token },
+          "/api/preview/home/",
+          {},
           true
         ),
         {
           method: "GET",
+          headers: {
+            Authorization: session?.access_token,
+          }
         }
       );
       const data = await response.json();

@@ -73,14 +73,14 @@ export default function CrewModal({
               onClick={async () => {
                 setShowCrewModal(false);
                 const response = await fetch(
-                  prepareBackendUrl("/api/crews/", {}, true),
+                  prepareBackendUrl("/api/crew/", {}, true),
                   {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
+                      "Authorization": session?.access_token!,
                     },
                     body: JSON.stringify({
-                      access_token: session?.access_token,
                       crew_name: specifiedCrewName,
                       specified_name: specifiedUsername,
                     }),

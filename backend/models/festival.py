@@ -1,6 +1,6 @@
 from __future__ import annotations
 import datetime as dt
-from src.database.base_model import BaseModel
+from models import BaseModel
 from peewee import CharField, DateTimeField, FloatField, TextField, UUIDField
 import uuid
 

@@ -3,7 +3,7 @@ import geopy.distance
 import requests
 import ipinfo
 from loguru import logger
-
+from config import settings
 
 def lat_lon_from_location(location: str) -> tuple[float, float] | None:
     r = requests.get(
@@ -25,7 +25,7 @@ def lat_lon_from_ip(ip: str | None) -> tuple[float, float] | None:
         # fallback to hamburg
         return 53.551086, 9.993682
     try:
-        handler = ipinfo.getHandler(os.getenv("IPINFO_ACCESS_TOKEN"))
+        handler = ipinfo.getHandler(settings.ipinfo_token)
         details = handler.getDetails(ip)
         logger.info(f"User is in {details.city}, {details.country}")
         return details.latitude, details.longitude

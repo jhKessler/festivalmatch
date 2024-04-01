@@ -3,15 +3,15 @@ import re
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-
+from config import settings
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0"
 }
 
 def build_url(path: str) -> str:
     if path.startswith("/"):
-        return f"{os.getenv("DATA_PAGE_BASE_URL")}{path}"
-    return f"{os.getenv("DATA_PAGE_BASE_URL")}/{path}"
+        return f"{settings.data_page_base_url}{path}"
+    return f"{settings.data_page_base_url}/{path}"
 
 def get_festival_urls() -> set[str]:
     r = requests.get(

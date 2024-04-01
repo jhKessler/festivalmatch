@@ -42,7 +42,7 @@ export const authOptions = {
           // @ts-ignore
           user.image = profile?.images![1].url; // Use high resolution if available
         } catch {}
-        const response = await fetch(prepareBackendUrl("/api/authorize/"), {
+        const response = await fetch(prepareBackendUrl("/api/user/"), {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

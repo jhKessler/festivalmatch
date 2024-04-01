@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from src.database import Artist
+from models import Artist
 
 
 @dataclass

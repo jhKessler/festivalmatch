@@ -1,10 +1,10 @@
-from src.common.apis.responses.spotify_responses import (
+from core.common.apis.responses.spotify_responses import (
     TopArtistResponse,
     TopTracksResponse,
 )
-from src.database.user import UserSuggestions
-from src.recommendation import user as recommend_user
-from src.recommendation import crew as recommend_crew
+from models.user import UserAuthorizationData
+from core.recommendation import user as recommend_user
+from core.recommendation import crew as recommend_crew
 
 
 def recommend_n_user_festivals(
@@ -34,7 +34,7 @@ def recommend_n_user_festivals(
 
 
 def recommend_n_crew_festivals(
-    users: list[UserSuggestions],
+    users: list[UserAuthorizationData],
     user_n: int,
     result_n: int,
 ) -> list[dict]:

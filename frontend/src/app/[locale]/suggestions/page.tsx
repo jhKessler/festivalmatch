@@ -11,12 +11,15 @@ async function getSuggestions({
 }: {
   accessToken: string | undefined;
 }): Promise<FestivalSuggestion[]> {
+  if (!accessToken) {
+    return []
+  }
   const response = await fetch(
-    prepareBackendUrl("/api/suggestions/", { access_token: accessToken }, true),
+    prepareBackendUrl("/api/user/suggestions/", {}, true),
     {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
+        "Authorization": accessToken
       },
       cache: "no-store",
     }

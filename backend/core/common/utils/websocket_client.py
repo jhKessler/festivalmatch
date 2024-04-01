@@ -2,7 +2,7 @@ import os
 import uuid
 from fastapi import WebSocket
 from loguru import logger
-
+from config import settings
 
 class WebsocketClient:
     def __init__(self):
@@ -15,7 +15,7 @@ class WebsocketClient:
         if crew_id not in self.connections:
             self.connections[crew_id] = []
 
-        if len(self.connections[crew_id]) > int(os.getenv("MAX_CREW_MEMBERS", 4)):
+        if len(self.connections[crew_id]) > int(settings.max_connections_per_crew):
             raise ValueError("Crew already has too many connections")
         self.connections[crew_id].append(connection)
         logger.info(f"Connections for crew {crew_id}: {self.connections[crew_id]}")

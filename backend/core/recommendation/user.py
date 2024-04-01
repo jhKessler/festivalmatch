@@ -2,14 +2,13 @@ from collections import defaultdict
 import random
 from typing import TypedDict
 import numpy as np
-from src.common.queries import get_relevant_appearances
-from src.common.apis.responses.spotify_responses import (
+from core.common.queries import get_relevant_appearances
+from core.common.apis.responses.spotify_responses import (
     TopArtistResponse,
     TopTracksResponse,
 )
 import uuid
-from src.common.apis.geocode import get_distance_km
-from src.database import ArtistAppearance, Festival, Artist
+from models import ArtistAppearance, Festival
 from .common import filter_top_n, combine_subscores
 
 weightings = np.sqrt(np.arange(50, 0, -1))

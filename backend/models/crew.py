@@ -1,9 +1,9 @@
 from __future__ import annotations
 import datetime as dt
 import uuid
-from src.database.base_model import BaseModel
+from models import BaseModel
 from peewee import CharField, DateTimeField, ForeignKeyField, UUIDField, BooleanField
-from .user import User, UserSuggestions
+from .user import User, UserAuthorizationData
 from playhouse.postgres_ext import JSONField
 
 
@@ -15,6 +15,9 @@ class Crew(BaseModel):
     suggestions = JSONField()
     active = BooleanField(default=True)
 
+    def is_member(self, user: User) -> bool:
+        return user in {member.user for member in self.members if member.is_active}
+
     @classmethod
     def create(
         cls,
@@ -22,7 +25,7 @@ class Crew(BaseModel):
         creator: User,
         specified_name: str,
         crew_suggestions: dict,
-        creator_suggestions: UserSuggestions,
+        creator_suggestions: UserAuthorizationData,
     ) -> Crew:
         creator = User.get(User.id == creator)
         record = super(Crew, cls).create(
@@ -42,6 +45,6 @@ class Crew(BaseModel):
 class CrewMember(BaseModel):
     crew = ForeignKeyField(Crew, backref="members", field="id")
     user = ForeignKeyField(User, backref="memberships", field="id")
-    data = ForeignKeyField(UserSuggestions)
+    data = ForeignKeyField(UserAuthorizationData)
     specified_name = CharField(max_length=255)
     is_active = BooleanField(default=True)

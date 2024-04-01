@@ -1,11 +1,11 @@
 import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
-
+from config import settings
 REQ_ARTIST_CLIENT = spotipy.Spotify(
     auth_manager=SpotifyClientCredentials(
-        client_id=os.getenv("SPOTIFY_CLIENT_ID"),
-        client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
+        client_id=settings.spotify_client_id,
+        client_secret=settings.spotify_client_secret,
     )
 )
 
