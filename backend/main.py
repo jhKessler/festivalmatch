@@ -71,14 +71,14 @@ async def validate_access_token(request: Request, call_next):
     request.state.crew = crew
     return await call_next(request)
 
-# if settings.mode == Mode.dev:
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+if settings.mode == Mode.dev:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 
 logger.remove()

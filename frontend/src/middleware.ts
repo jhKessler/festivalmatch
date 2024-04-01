@@ -35,7 +35,6 @@ export default async function middleware(req: NextRequest) {
     return intlMiddleware(req);
   } else {
     const response = await (authMiddleware as any)(req);
-    console.log(response, 1);
     if (!response.ok) {
       // Assuming the middleware sets a 401 status for unauthorized access
       return NextResponse.redirect(new URL("/", req.url));

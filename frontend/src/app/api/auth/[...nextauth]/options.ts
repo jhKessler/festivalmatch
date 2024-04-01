@@ -54,9 +54,6 @@ export const authOptions = {
             access_token: account.access_token,
           }),
         });
-        if (!response.ok) {
-          console.log("Error authorizing user");
-        }
         if (process.env.NEXT_PUBLIC_MODE == "dev") {
           return response.ok;
         }

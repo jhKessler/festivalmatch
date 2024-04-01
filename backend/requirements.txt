@@ -1,5 +1,5 @@
 python-dotenv==1.0.0
-fastapi==0.104.1
+fastapi==0.110.0
 uvicorn==0.24.0.post1
 loguru==0.7.2
 peewee==3.17.0

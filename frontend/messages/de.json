@@ -15,8 +15,8 @@
   },
 
   "ErrorPage": {
-    "Title": "Irgendwas ist schief gelaufen...",
-    "Message": "Bitte versuche es später noch einmal.",
+    "Title": "Session abgelaufen",
+    "Message": "Bitte versuche es noch einmal.",
     "Button": "Zurück zur Startseite"
   },
   "Privacy": {
