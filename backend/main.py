@@ -50,8 +50,7 @@ async def validate_access_token(request: Request, call_next):
     is_signup_request = request.url.path == "/api/user/" and request.method == "POST"
     if is_signup_request or isinstance(request, WebSocket):
         return await call_next(request)
-    access_token =  request.headers.get("Authorization")
-    logger.info(request.headers, access_token)
+    access_token = request.headers.get("Authorization")
     if not access_token:
         raise HTTPException(status_code=401, detail="Access token required")
     try:

@@ -40,7 +40,7 @@ async def authorize_user(request: Request, body: AuthorizationBody):
     return {"message": "Success"}
 
 
-@router.get("/suggestions")
+@router.get("/suggestions/")
 async def get_suggestions(request: Request):
     """Get the suggestions for a user, needs to contain the access_token in the query parameters
 

@@ -11,7 +11,7 @@ async function getSuggestions({
 }: {
   accessToken: string | undefined;
 }): Promise<FestivalSuggestion[]> {
-  if (!accessToken) {
+  if (accessToken === undefined) {
     return []
   }
   const response = await fetch(
