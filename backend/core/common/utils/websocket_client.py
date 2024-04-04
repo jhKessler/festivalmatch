@@ -15,7 +15,7 @@ class WebsocketClient:
         if crew_id not in self.connections:
             self.connections[crew_id] = []
 
-        if len(self.connections[crew_id]) > int(settings.max_connections_per_crew):
+        if len(self.connections[crew_id]) > int(settings.max_crew_members):
             raise ValueError("Crew already has too many connections")
         self.connections[crew_id].append(connection)
         logger.info(f"Connections for crew {crew_id}: {self.connections[crew_id]}")
