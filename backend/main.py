@@ -7,6 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from loguru import logger
 
 from core.data_gathering.ops import assert_data
 from models.crew import Crew
@@ -50,6 +51,7 @@ async def validate_access_token(request: Request, call_next):
     if is_signup_request or isinstance(request, WebSocket):
         return await call_next(request)
     access_token =  request.headers.get("Authorization")
+    logger.info(request.headers, access_token)
     if not access_token:
         raise HTTPException(status_code=401, detail="Access token required")
     try:
