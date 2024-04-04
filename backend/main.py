@@ -57,8 +57,12 @@ async def validate_access_token(request: Request, call_next):
     except UserAuthorizationData.DoesNotExist:
         raise HTTPException(status_code=403, detail="User not authorized")
     
+    is_create_crew_request = request.url.path == "/api/crew/" and request.method == "POST"
+    crew_id_required = not request.url.path.startswith("/api/preview/") or is_create_crew_request
+    if not crew_id_required:
+        return await call_next(request)
     crew_id = request.query_params.get("crew_id")
-    if not crew_id and request.url.path != "/api/crew/":
+    if not crew_id:
         raise HTTPException(status_code=403, detail="Crew id required")
     if not crew_id:
         return await call_next(request)

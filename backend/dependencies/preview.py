@@ -39,9 +39,7 @@ def get_user_crews(user_auth: UserAuthorizationData) -> dict:
     # select all crews where user is a member
     response = []
     for membership in user_auth.user.memberships:
-        if not membership.crew.active:
-            continue
-        if not membership.is_active:
+        if not membership.crew.active or not membership.is_active:
             continue
         # select crew members of crew
         profile_pictures = [
