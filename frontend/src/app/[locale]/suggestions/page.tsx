@@ -19,9 +19,8 @@ async function getSuggestions({
     {
       method: "GET",
       headers: {
-        "Authorization": accessToken
-      },
-      cache: "no-store",
+        Authorization: accessToken,
+      }
     }
   );
   return await response.json();
