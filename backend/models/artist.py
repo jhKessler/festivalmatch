@@ -28,18 +28,14 @@ class ArtistMapping(BaseModel):
 
     @staticmethod
     def from_name(name: str) -> ArtistMapping:
-        if artist_mapping := ArtistMapping.get_or_none(
-            ArtistMapping.source_name == name
-        ):
+        if artist_mapping := ArtistMapping.get_or_none(ArtistMapping.source_name == name):
             return artist_mapping
         try:
             matched_id, matched_name, matched_img_url = spotify.search_for_artist(name)
         except Exception as e:
             logger.error(f"Failed to search for {name}: {e}")
             return None
-        artist = Artist.get_or_create(
-            id=matched_id, name=matched_name, img_url=matched_img_url
-        )[0]
+        artist = Artist.get_or_create(id=matched_id, name=matched_name, img_url=matched_img_url)[0]
         return ArtistMapping.get_or_create(source_name=name, artist=artist)[0]
 
 

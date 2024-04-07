@@ -47,9 +47,12 @@ async def validate_access_token(request: Request, call_next):
         HTTPException: 403 if user is not authorized
         HTTPException: 404 if crew is not found or not active
     """
+    # sign up request does not need an access token
     is_signup_request = request.url.path == "/api/user/" and request.method == "POST"
     if is_signup_request or isinstance(request, WebSocket):
         return await call_next(request)
+    
+    # try to get the user authorization data from the access token
     access_token = request.headers.get("Authorization")
     if not access_token:
         raise HTTPException(status_code=401, detail="Access token required")
@@ -58,14 +61,14 @@ async def validate_access_token(request: Request, call_next):
     except UserAuthorizationData.DoesNotExist:
         raise HTTPException(status_code=403, detail="User not authorized")
     
+    # if the request is to create a crew, we don't need to check if the user is in the crew
     is_create_crew_request = request.url.path == "/api/crew/" and request.method == "POST"
     no_crew_id_required = request.url.path.startswith("/api/preview/") or request.url.path.startswith("/api/user/") or is_create_crew_request
     if no_crew_id_required:
         return await call_next(request)
-    crew_id = request.query_params.get("crew_id")
-    if not crew_id:
-        raise HTTPException(status_code=403, detail="Crew id required")
-    if not crew_id:
+
+    # try to get the crew specified
+    if not (crew_id := request.query_params.get("crew_id")):
         return await call_next(request)
     try:
         crew = Crew.get_by_id(crew_id)
@@ -73,7 +76,14 @@ async def validate_access_token(request: Request, call_next):
         raise HTTPException(status_code=404, detail="Crew not found")
     if not crew.active:
         raise HTTPException(status_code=404, detail="Crew not found")
+    # attach the crew to the request state
     request.state.crew = crew
+    # if the request is to join a crew, we don't need to check if the user is in the crew
+    if request.url.path == "/api/crew/join/":
+        return await call_next(request)
+    # throw an error if user is not in the crew
+    if not Crew.is_member(crew, request.state.authorization.user) and request.url.path != "/api/crew/join/":
+        raise HTTPException(status_code=403, detail="User not in crew")
     return await call_next(request)
 
 if settings.mode == Mode.dev:

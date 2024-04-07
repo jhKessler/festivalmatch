@@ -2,7 +2,7 @@
 
 
 backend:
-	cd backend && python app.py
+	cd backend && python main.py
 
 db:
 	docker compose up -d festival_db
